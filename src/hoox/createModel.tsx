@@ -1,19 +1,12 @@
-import React, { ReactElement } from "react";
-import ReactDom from "react-dom";
+import React from "react";
 import Container from "./container";
+import render from "./render";
 
 function SimulateRender(props: { hook: any; update: any }) {
   const data = props.hook();
   props.update(data);
 
-  return <div></div>;
-}
-
-function render(Ele: ReactElement) {
-  const container = document.createElement("div");
-  document.body.append(container);
-  ReactDom.render(Ele, container);
-  // return <Ele></Ele>;
+  return <></>;
 }
 
 function createModel(hook: any) {
