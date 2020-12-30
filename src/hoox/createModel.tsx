@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import ReactDom from "react-dom";
+import Container from "./container";
 
 function SimulateRender(props: { hook: any; update: any }) {
   const data = props.hook();
@@ -13,18 +14,6 @@ function render(Ele: ReactElement) {
   document.body.append(container);
   ReactDom.render(Ele, container);
   // return <Ele></Ele>;
-}
-
-type SubScriber<T> = (data: T) => void;
-
-class Container<T = unknown> {
-  data!: T;
-  subScribers = new Set<SubScriber<T>>();
-  notify() {
-    for (const subscriber of this.subScribers) {
-      subscriber(this.data);
-    }
-  }
 }
 
 function createModel(hook: any) {
