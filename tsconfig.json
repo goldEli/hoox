@@ -5,6 +5,8 @@
     "compilerOptions": {
         "strict": true,
         "esModuleInterop": true,
+        "noImplicitAny": false,
+        "downlevelIteration": true,
         "lib": [
             "dom",
             "es2015"
