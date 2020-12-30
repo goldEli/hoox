@@ -1,29 +1,23 @@
 import React from "react";
 import Container from "./container";
+import SimulateComponent from "./SimulateComponent";
 import render from "./render";
+import { Hook } from "./type";
 
-function SimulateRender(props: { hook: any; update: any }) {
-  const data = props.hook();
-  props.update(data);
-
-  return <></>;
-}
-
-function createModel(hook: any) {
-  const container = new Container();
-  // const data = hook();
+function createModel<T, P>(hook: Hook<T, P>, hookArg?: P) {
+  const container = new Container<T>();
 
   render(
-    <SimulateRender
-      hook={hook}
+    <SimulateComponent
+      hook={() => hook(hookArg)}
       update={(data) => {
         container.data = data;
         container.notify();
       }}
     />
   );
-  function useModel() {
-    const [state, setState] = React.useState(() => container.data);
+  function useModel(): T {
+    const [state, setState] = React.useState<T>(container.data);
 
     React.useEffect(() => {
       function subscriber(data) {
