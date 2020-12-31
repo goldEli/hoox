@@ -1,5 +1,4 @@
 import React from "react";
-// import { createModel } from "hox";
 import { createModel } from "../hoox";
 
 function useCounter(): {
