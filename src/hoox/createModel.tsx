@@ -6,7 +6,6 @@ import { Hook } from "./type";
 
 function createModel<T, P>(hook: Hook<T, P>, hookArg?: P) {
   const container = new Container<T>();
-
   render(
     <SimulateComponent
       hook={() => hook(hookArg)}
@@ -27,7 +26,7 @@ function createModel<T, P>(hook: Hook<T, P>, hookArg?: P) {
       return () => {
         container.subScribers.delete(subscriber);
       };
-    }, [container]);
+    }, []);
 
     return state;
   }
